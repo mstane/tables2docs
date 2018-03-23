@@ -1,0 +1,113 @@
+{
+  "inputDataSource": {
+    "url": "jdbc:h2:~/test",
+    "database": "",
+    "port": 1,
+    "username": "sa",
+    "password": "",
+    "driverClassName": "org.h2.Driver"
+  },
+  "outputDataSource": {
+    "url": "mongodb://localhost:27017/test",
+    "port": 27017,
+    "database": "test",
+    "username": "",
+    "password": "",
+    "driverClassName": ""
+  },
+  "params": {
+    "rowsFetchSize": 10000,
+    "chunkListSize": 250,
+    "numberOfKeysPerQuery": 250
+  },
+  "mappings": {
+    "inputTableName": "inputTableName",
+    "outputTableName": "outputTableName",
+    "inputTableKey": [
+      "key1"
+    ],
+    "inputCondition": "",
+    "columns": [
+      {
+        "inputName": "inputName1",
+        "outputName": "outputName1"
+      },
+      {
+        "inputName": "inputName2",
+        "outputName": "outputName2"
+      },
+      {
+        "inputName": "inputName3",
+        "outputName": "outputName3",
+        "valueMappings": [
+          {
+            "inputValue": "inputValue1",
+            "outputValue": "outputValue1"
+          },
+          {
+            "inputValue": "inputValue2",
+            "outputValue": "outputValue2"
+          }
+        ]
+      }
+    ],
+    "nested": [
+      {
+        "inputTableName": "inputTableName1",
+        "outputTableName": "outputTableName1",
+        "inputTableKey": [
+          "key1"
+        ],
+        "foreignTableKey": [
+          "key1"
+        ],
+        "columns": [
+          {
+            "inputName": "inputName1",
+            "outputName": "outputName1"
+          },
+          {
+            "inputName": "inputName2",
+            "outputName": "outputName2"
+          }
+        ],
+        "nested": [
+          {
+            "inputTableName": "inputTableName12",
+            "outputTableName": "outputTableName12",
+            "inputTableKey": [
+              "key1"
+            ],
+            "columns": [
+              {
+                "inputName": "inputName1",
+                "outputName": "outputName1"
+              },
+              {
+                "inputName": "inputName2",
+                "outputName": "outputName2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "inputTableName": "inputTableName2",
+        "outputTableName": "outputTableName2",
+        "inputTableKey": [
+          "key1"
+        ],
+        "columns": [
+          {
+            "inputName": "inputName1",
+            "outputName": "outputName1"
+          },
+          {
+            "inputName": "inputName2",
+            "outputName": "outputName2"
+          }
+        ]
+      }
+    ]
+  }
+}
