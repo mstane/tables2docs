@@ -1,12 +1,4 @@
 {
-  "inputDataSource": {
-    "url": "jdbc:h2:mem:dataSource",
-    "database": "",
-    "port": 1,
-    "username": "sa",
-    "password": "",
-    "driverClassName": "org.h2.Driver"
-  },
   "params": {
     "rowsFetchSize": 10000,
     "chunkListSize": 250,

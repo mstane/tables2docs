@@ -3,7 +3,6 @@ package sm.t2d.transformer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.Serializable;
 import java.util.*;
 
 public class Document {
