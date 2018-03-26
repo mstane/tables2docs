@@ -2,7 +2,7 @@ package sm.t2d.transformer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sm.t2d.transformer.inputconfig.InputConfig;
+import sm.t2d.inputconfig.InputConfig;
 
 import javax.sql.DataSource;
 import java.util.*;

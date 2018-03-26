@@ -1,4 +1,4 @@
-package sm.t2d.transformer.inputconfig;
+package sm.t2d.inputconfig;
 
 import java.util.List;
 
