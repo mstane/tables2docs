@@ -1,11 +1,8 @@
-package sm.t2d.inputconfig;
+package sm.t2d.transdata.config;
 
-import java.util.List;
-
-public class Column {
+public class ColumnConfig {
     private String inputName;
     private String outputName;
-    private List<ValueMapping> valueMappings;
 
     public String getInputName() {
         return inputName;
@@ -23,11 +20,4 @@ public class Column {
         this.outputName = outputName;
     }
 
-    public List<ValueMapping> getValueMappings() {
-        return valueMappings;
-    }
-
-    public void setValueMappings(List<ValueMapping> valueMappings) {
-        this.valueMappings = valueMappings;
-    }
 }

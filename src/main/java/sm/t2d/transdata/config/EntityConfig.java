@@ -1,15 +1,15 @@
-package sm.t2d.inputconfig;
+package sm.t2d.transdata.config;
 
 import java.util.List;
 
-public class Entity {
+public class EntityConfig {
     private String inputTableName;
     private String outputTableName;
     private List<String> inputTableKey;
     private List<String> foreignTableKey;
     private String inputCondition;
-    private List<Column> columns;
-    private List<Entity> nested;
+    private List<ColumnConfig> columns;
+    private List<EntityConfig> nested;
 
     public String getInputTableName() {
         return inputTableName;
@@ -59,19 +59,19 @@ public class Entity {
         this.inputCondition = inputCondition;
     }
 
-    public List<Column> getColumns() {
+    public List<ColumnConfig> getColumns() {
         return columns;
     }
 
-    public void setColumns(List<Column> columns) {
+    public void setColumns(List<ColumnConfig> columns) {
         this.columns = columns;
     }
 
-    public List<Entity> getNested() {
+    public List<EntityConfig> getNested() {
         return nested;
     }
 
-    public void setNested(List<Entity> nested) {
+    public void setNested(List<EntityConfig> nested) {
         this.nested = nested;
     }
 

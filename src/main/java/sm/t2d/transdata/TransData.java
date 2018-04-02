@@ -1,30 +1,28 @@
-package sm.t2d.inputconfig;
+package sm.t2d.transdata;
+
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import sm.t2d.transdata.config.InputConfig;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-public class InputConfig {
+public final class TransData {
+    private final Entity mappings;
+    private final Params params;
 
-    private Entity mappings;
-    private Params params;
+    public TransData(Entity mappings, Params params) {
+        this.mappings = mappings;
+        this.params = params;
+    }
 
     public Entity getMappings() {
         return mappings;
     }
 
-    public void setMappings(Entity mappings) {
-        this.mappings = mappings;
-    }
-
     public Params getParams() {
         return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
     }
 
     public static class Builder {
@@ -38,13 +36,6 @@ public class InputConfig {
             this.fileName = fileName;
         }
 
-        public InputConfig build() throws IOException {
-            InputConfig inputConfig = loadConfig();
-            compile(inputConfig);
-
-            return inputConfig;
-        }
-
         private InputConfig loadConfig() throws IOException {
             InputConfig inputConfig = null;
             ClassLoader classLoader = InputConfig.class.getClassLoader();
@@ -56,11 +47,18 @@ public class InputConfig {
             return inputConfig;
         }
 
-        private void compile(InputConfig inputConfig) {
+        private TransData compile(InputConfig inputConfig) {
+            return null;
 
         }
 
+        public TransData build() throws IOException {
+            InputConfig inputConfig = loadConfig();
+            return compile(inputConfig);
+        }
 
     }
+
+
 
 }

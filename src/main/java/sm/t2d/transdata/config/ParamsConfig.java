@@ -1,6 +1,6 @@
-package sm.t2d.inputconfig;
+package sm.t2d.transdata.config;
 
-public class Params {
+public class ParamsConfig {
     private int rowsFetchSize;
     private int chunkListSize;
     private int numberOfKeysPerQuery;
