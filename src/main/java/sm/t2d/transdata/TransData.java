@@ -1,13 +1,5 @@
 package sm.t2d.transdata;
 
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import sm.t2d.transdata.config.InputConfig;
-
-import java.io.IOException;
-import java.io.InputStream;
-
 public final class TransData {
     private final Entity mappings;
     private final Params params;
@@ -25,40 +17,22 @@ public final class TransData {
         return params;
     }
 
-    public static class Builder {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TransData)) return false;
 
-        private final String fileName;
+        TransData transData = (TransData) o;
 
-        private final ObjectMapper objectMapper = new ObjectMapper();
-
-        public Builder(String fileName) {
-            objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-            this.fileName = fileName;
-        }
-
-        private InputConfig loadConfig() throws IOException {
-            InputConfig inputConfig = null;
-            ClassLoader classLoader = InputConfig.class.getClassLoader();
-            try (InputStream inputStream = classLoader.getResourceAsStream(fileName)) {
-                if (inputStream != null) {
-                    inputConfig = objectMapper.readValue(inputStream, InputConfig.class);
-                }
-            }
-            return inputConfig;
-        }
-
-        private TransData compile(InputConfig inputConfig) {
-            return null;
-
-        }
-
-        public TransData build() throws IOException {
-            InputConfig inputConfig = loadConfig();
-            return compile(inputConfig);
-        }
-
+        if (mappings != null ? !mappings.equals(transData.mappings) : transData.mappings != null) return false;
+        return params != null ? params.equals(transData.params) : transData.params == null;
     }
 
-
+    @Override
+    public int hashCode() {
+        int result = mappings != null ? mappings.hashCode() : 0;
+        result = 31 * result + (params != null ? params.hashCode() : 0);
+        return result;
+    }
 
 }
