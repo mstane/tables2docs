@@ -1,0 +1,33 @@
+{
+  "params": {
+    "rowsFetchSize": 10000,
+    "chunkListSize": 250,
+    "numberOfKeysPerQuery": 250
+  },
+  "mappings": {
+    "inputTableName": "film",
+    "outputTableName": "film",
+    "inputTableKey": [
+      "film_id"
+    ],
+    "inputCondition": "",
+    "columns": [
+      {
+        "inputName": "film_id",
+        "outputName": "film_id"
+      },
+      {
+        "inputName": "title",
+        "outputName": "title"
+      },
+      {
+        "inputName": "description",
+        "outputName": "description"
+      },
+      {
+        "inputName": "release_year",
+        "outputName": "release_year"
+      }
+    ]
+  }
+}

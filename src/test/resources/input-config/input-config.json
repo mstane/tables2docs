@@ -81,6 +81,9 @@
         "inputTableKey": [
           "key1"
         ],
+        "foreignTableKey": [
+          "key1"
+        ],
         "columns": [
           {
             "inputName": "inputName1",
