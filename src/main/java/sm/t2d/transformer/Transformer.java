@@ -13,10 +13,15 @@ import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
 
-import static sm.t2d.transformer.TransformerUtils.*;
+import static sm.t2d.transformer.TransformerUtils.query;
+import static sm.t2d.transformer.TransformerUtils.stringifyKeys;
 
 
 public class Transformer {
@@ -90,23 +95,26 @@ public class Transformer {
         Document document = loadEntityFromRow(row, entity);
         List<String> keyTableFieldValuesPath = getKeyTableFieldValuesPath(row, entity);
         List<String> docAttributePath = entity.getDocAttributePath();
-
-        Document parentDocument = null;
-        for(int i = 0; i < docAttributePath.size() - 1; i++) {
-            if (i == 0) {
-                parentDocument = documentMap.get(keyTableFieldValuesPath.get(i));
-            } else {
-                parentDocument = parentDocument.getDocument(
-                        docAttributePath.get(i),
-                        keyTableFieldValuesPath.get(i)
-                );
+        if (entity.isRoot()) {
+            documentMap.put(keyTableFieldValuesPath.get(0), document);
+        } else {
+            Document parentDocument = null;
+            for (int i = 0; i < docAttributePath.size() - 1; i++) {
+                if (i == 0) {
+                    parentDocument = documentMap.get(keyTableFieldValuesPath.get(i));
+                } else {
+                    parentDocument = parentDocument.getDocument(
+                            docAttributePath.get(i),
+                            keyTableFieldValuesPath.get(i)
+                    );
+                }
             }
+            parentDocument.pushDocument(
+                    docAttributePath.get(docAttributePath.size() - 1),
+                    keyTableFieldValuesPath.get(docAttributePath.size() - 1),
+                    document
+            );
         }
-        parentDocument.pushDocument(
-                docAttributePath.get(docAttributePath.size() - 1),
-                keyTableFieldValuesPath.get(docAttributePath.size() - 1),
-                document
-        );
     }
 
     private Document loadEntityFromRow(ResultSet row, Entity entity) throws SQLException {
@@ -124,6 +132,7 @@ public class Transformer {
                 } else {
                     document.put(column.getOutputName(), value);
                 }
+                document.put(column.getOutputName(), value);
             }
         }
         return document;
