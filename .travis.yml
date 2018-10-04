@@ -1,0 +1,12 @@
+language: java
+sudo: false
+install: true
+
+jdk:
+  - oraclejdk8
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=mstane-github -Dsonar.login=15e3147bf4be5a636802935ce9c8f7b24f90956e
+  - bash <(curl -s https://codecov.io/bash)
+cache:
+  directories:
+    - '$HOME/.m2/repository'
